@@ -1,7 +1,6 @@
 def  LDR():
   import spidev
   import time
-  import os
  
 # Open SPI bus
   spi = spidev.SpiDev()
