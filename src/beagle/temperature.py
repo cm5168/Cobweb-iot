@@ -1,4 +1,4 @@
-def tmp():
+def tmp(sensor_pin):
 	import Adafruit_BBIO.ADC as ADC
 	import time
 	sensor_pin = 'P9_40'

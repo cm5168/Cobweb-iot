@@ -1,5 +1,11 @@
-from setuptools import setup
-
+import sys
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+	
+if sys.version_info < (2, 6):
+    raise NotImplementedError("Sorry, you need at least Python 2.6 or Python 3.2+ to use cobweb-iot.")
 '''
 def readme():
 	with open('README.rst') as f:
@@ -16,5 +22,5 @@ setup(name = 'cobwebiot',
 		author_email = 'cm19920214@gmail.com',
 		license = 'MIT',
 		packages=['cobwebiot'],
-		install_requires=['bottle'],
+		install_requires=['Adafruit_I2C','Adafruit_BBIO'],
 		zip_safe = False)
