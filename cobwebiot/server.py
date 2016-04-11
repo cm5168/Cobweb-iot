@@ -5,16 +5,20 @@ if sys.version_info.major == 2:
 else:
 	import socketserver as ss
 
-class SERVER(ss.BaseRequestHandler):
-    def handle(self):
-        # self.request is the TCP socket connected to the client
-        self.data = self.request.recv(1024).strip()
-        print("{} sent:".format(self.client_address[0]))
-        print(self.data)
-        # just send back the same data, but upper-cased
-        self.request.sendall(self.data.upper())
 
-def http_server(HOST,PORT):
+
+def http_server(HOST,PORT,FUNC):
+
+	class SERVER(ss.BaseRequestHandler):
+		def handle(self):
+			# self.request is the TCP socket connected to the client
+			self.data = self.request.recv(1024).strip()
+			print("{} sent:".format(self.client_address[0]))
+			print(self.data)
+			FUNC("{}".format(self.client_address[0]),self.data)
+			# just send back the same data, but upper-cased
+			self.request.sendall(self.data.upper())
+
 	server = ss.TCPServer((HOST,PORT),SERVER)
 	return server
 
