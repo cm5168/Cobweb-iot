@@ -7,7 +7,7 @@ else:
 
 
 
-def http_server(HOST,PORT,FUNC):
+def http_server(HOST,PORT,FUNC=0):
 
 	class SERVER(ss.BaseRequestHandler):
 		def handle(self):
@@ -15,7 +15,8 @@ def http_server(HOST,PORT,FUNC):
 			self.data = self.request.recv(1024).strip()
 			print("{} sent:".format(self.client_address[0]))
 			print(self.data)
-			FUNC("{}".format(self.client_address[0]),self.data)
+			if FUNC:
+				FUNC("{}".format(self.client_address[0]),self.data)
 			# just send back the same data, but upper-cased
 			self.request.sendall(self.data.upper())
 
