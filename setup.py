@@ -22,5 +22,5 @@ setup(name = 'cobwebiot',
 		author_email = 'cm19920214@gmail.com',
 		license = 'MIT',
 		packages=['cobwebiot'],
-		install_requires=['Adafruit_I2C','Adafruit_BBIO'],
+		install_requires=[],
 		zip_safe = False)
