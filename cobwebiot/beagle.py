@@ -1,4 +1,6 @@
 from Adafruit_I2C import Adafruit_I2C
+import Adafruit_BBIO.ADC as BADC
+import Adafruit_BBIO.GPIO as GPIO
 
 class ACC:
 	def __init__(self):
@@ -10,7 +12,7 @@ class ACC:
 		# wake up the device (out of sleep mode)
 		# bit 6 on register 0x6B set to 0
 		self.i2c.write8(0x6B, 0)
-		
+
 	def read(self):
 		# read and print acceleration on x, y, z axis
 		# Combined to obtain raw acceleration data
@@ -40,3 +42,26 @@ class ACC:
 		#print (str(g[2]))
 		# print z accelerations.
 		return g
+
+
+
+class ADC:
+	def __init__(self):
+		self.g=0
+		self.sensor_pin = 'P9_40'
+		self.ADC = BADC
+	def start(self):
+		self.ADC.setup()
+	def read(self):
+		self.g = self.ADC.read(self.sensor_pin)
+		return self.g*1.800
+
+
+
+def blink(pin,time = 1):
+	GPIO.setup(pin, GPIO.OUT)
+	while True:
+		GPIO.output(pin, GPIO.HIGH)
+		time.sleep(time/2)
+		GPIO.output(pin, GPIO.LOW)
+		time.sleep(time/2)
