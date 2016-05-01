@@ -5,8 +5,6 @@ if sys.version_info.major == 2:
 else:
     import socketserver as ss
 
-
-
 def http_server(HOST,PORT,FUNC=0):
 
     class SERVER(ss.BaseRequestHandler):

@@ -1,5 +1,5 @@
 import spidev
-from . import dev
+from cobwebiot import dev
 
 class SPI:
     def __init__(self):
