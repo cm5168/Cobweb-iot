@@ -42,7 +42,7 @@ class ACC:
         self.g[2] = raw / 16384.
         #print (str(g[2]))
         # print z accelerations.
-        return g
+        return self.g
 
 
 
