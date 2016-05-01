@@ -1,6 +1,7 @@
 from Adafruit_I2C import Adafruit_I2C
 import Adafruit_BBIO.ADC as BADC
 import Adafruit_BBIO.GPIO as GPIO
+import time
 
 class ACC:
     def __init__(self):
@@ -58,10 +59,10 @@ class ADC:
 
 
 
-def blink(pin,time = 1):
+def blink(pin,interval = 1):
     GPIO.setup(pin, GPIO.OUT)
     while True:
         GPIO.output(pin, GPIO.HIGH)
-        time.sleep(time/2)
+        time.sleep(interval/2)
         GPIO.output(pin, GPIO.LOW)
-        time.sleep(time/2)
+        time.sleep(interval/2)
