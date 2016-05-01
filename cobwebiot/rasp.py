@@ -10,5 +10,5 @@ class SPI:
         self.dev = dev_name
 
     def read_channel(self,channel):
-        adc = spi.xfer2(self.dev.get_xfer2(channel))
+        adc = self.spi.xfer2(self.dev.get_xfer2(channel))
         return self.dev.hex_to_data(adc[1],adc[2])
