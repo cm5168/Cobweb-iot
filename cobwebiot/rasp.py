@@ -1,7 +1,7 @@
 import spidev
 from . import dev
 
-class SPI
+class SPI:
     def __init__(self):
         self.spi = spidev.SpiDev()
 
