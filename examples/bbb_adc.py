@@ -1,8 +1,8 @@
 from __future__ import print_function
-import cobwebiot.beagle.adc as Badc
+import cobwebiot.beagle as bbb
 from time import sleep
 
-adc = Badc.ADC()
+adc = bbb.ADC()
 
 adc.start()
 

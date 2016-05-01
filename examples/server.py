@@ -1,14 +1,26 @@
+from __future__ import print_function
 from cobwebiot import server
-'''
 import Queue
-add_q = Queue.Queue()
-msg_q = Queue.Queue()
+import time
 
-def update_queue(address,data):
-	add_q.put(address)
-	msg_q.put(data)
-'''
+HOST, PORT = "localhost", 9999
 
-temp_server = server.http_server("localhost",9999)
-# temp_server = server.http_server("localhost",9999,update_queue)
-temp_server.serve_forever()
+msg_buffer = Queue.Queue()
+def MyTCPHandler(data):
+    msg_buffer.put(data)
+
+tcp_server = TCP(HOST,PORT,MyTCPHandler)
+
+try:
+    tcp_server.start()
+
+    while 1:
+        if not msg_buffer.empty():
+            temp_data = msg_buffer.get()
+            print(temp_data)
+        else:
+            time.sleep(0.2)
+
+except:
+    print("Finished")
+    tcp_server.stop()
