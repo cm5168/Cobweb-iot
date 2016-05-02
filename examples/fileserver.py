@@ -20,7 +20,7 @@ def sendfile(name, sock):
     sock.close()
 
 def Main():
-    host = socket.gethostname()
+    host = '0.0.0.0'
     port = 9999
     s = socket.socket()
     s.bind((host,port))
