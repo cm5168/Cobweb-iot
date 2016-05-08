@@ -3,21 +3,21 @@ from cobwebiot import client
 import sys
 
 
-HOST, PORT = 'localhost',9999
+HOST, PORT = '155.246.203.44',9999
 
-client = client.TCPclient(HOST,PORT)
+cc = client.TCPclient(HOST,PORT)
 
-client.connect()
+cc.connect()
 
 try:
     while 1:
         if sys.version_info.major == 2:
             data = raw_input("Input message:")
-            client.send(data)
+            cc.send(data)
 
         else:
             data = input("Input Message:")
-            client.send(data)
+            cc.send(data)
 except:
     print("Program stopped")
-    client.stop()
+    cc.stop()

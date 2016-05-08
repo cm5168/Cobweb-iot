@@ -39,6 +39,8 @@ class TCP:
         self.server.server_close()
 
 if __name__ == "__main__":
+    print("This is a sub-module for Cobwebiot")
+    '''
     import Queue
     import time
 
@@ -64,3 +66,4 @@ if __name__ == "__main__":
     except:
         print("Finished")
         tcp_server.stop()
+    '''

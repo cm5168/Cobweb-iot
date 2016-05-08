@@ -3,13 +3,13 @@ from cobwebiot import server
 import Queue
 import time
 
-HOST, PORT = "localhost", 9999
+HOST, PORT = "155.246.203.44", 9999
 
 msg_buffer = Queue.Queue()
 def MyTCPHandler(data):
     msg_buffer.put(data)
 
-tcp_server = TCP(HOST,PORT,MyTCPHandler)
+tcp_server = server.TCP(HOST,PORT,MyTCPHandler)
 
 try:
     tcp_server.start()
